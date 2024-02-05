@@ -4,6 +4,13 @@ using namespace std;
 
 
 bool isLeapYear(int year) {
+    cout << "year" << endl;
+    if(year < 1800){
+        if(year%4==0){
+            return true;
+        }
+        else return false;
+    }
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
         return true;
     else return false;
@@ -15,10 +22,11 @@ void print(int n){
 
 // calculate the days in months;
 int NumberOfDaysInMonth(int date, int month, int year){
-    
+    cout << month << endl;
     int numberOfDays =0;
     for (int i = 1; i < month; i++)
     {   
+        cout << "for loop running " << endl;
         if(i==2){
             if(isLeapYear(year)) numberOfDays+= 29;
             else numberOfDays += 28;
@@ -42,26 +50,34 @@ int NumberOfDaysInMonth(int date, int month, int year){
 
 // calculate the leap years;
 int calLeapYear(int year){
-   return (year / 4) - (year / 100) + (year / 400); 
+    if(year >= 1752){
+        year;
+        return (year / 4) - (year / 100) + (year / 400);
+    }
+    else return ((year-1)/4) ; 
 }
 
 // calculate the normal years;
 int calNormalYear(int year){
-    return year - calLeapYear(year);
+    int normalYear = year - calLeapYear(year);
+    cout << "this is normal year " << normalYear << endl;
+    cout << "this is leap year " << calLeapYear(year) << endl;
+    return normalYear;
 }
 
 // year deviatation;
 int deviatation(int date, int month, int year){
-    int n = year-1;
-    int deviatation = (calLeapYear(n)*2 + calNormalYear(n)+6)%7;
-    deviatation = (NumberOfDaysInMonth(date, month, year) + deviatation)%7;
+    int n = year;
+    const int calibration = 4; 
+    int deviatation = (calLeapYear(n)*2 + calNormalYear(n) + calibration + date)%7;
+    
     return deviatation;
 }
 
 int main(){
-    int date = 4;
-    int month = 3;
-    int year = 100;
+    int date = 1;
+    int month = 1;
+    int year =1752;
     print(deviatation(date, month, year));
     return 0;
 }
