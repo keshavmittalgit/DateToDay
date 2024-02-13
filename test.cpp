@@ -9,7 +9,7 @@ bool isLeapYear(int year) {
         if(year%4==0){
             return true;
         }
-        else return false;
+        else return false; 
     }
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
         return true;
@@ -51,14 +51,18 @@ int NumberOfDaysInMonth(int date, int month, int year){
 // calculate the leap years;
 int calLeapYear(int year){
     if(year >= 1752){
-        year;
-        return (year / 4) - (year / 100) + (year / 400);
+        year = year - 1752;
+        return (year / 4) - (year / 100) + (year / 400) ;
     }
     else return ((year-1)/4) ; 
 }
 
 // calculate the normal years;
 int calNormalYear(int year){
+    if(year >= 1752){
+        int normalYear = (year - 1751) - calLeapYear(year);
+        return normalYear;
+    }
     int normalYear = year - calLeapYear(year);
     cout << "this is normal year " << normalYear << endl;
     cout << "this is leap year " << calLeapYear(year) << endl;
@@ -78,6 +82,7 @@ int main(){
     int date = 1;
     int month = 1;
     int year =1752;
+    cout << year << endl;
     print(deviatation(date, month, year));
     return 0;
 }
