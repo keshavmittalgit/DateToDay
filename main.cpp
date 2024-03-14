@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 
-
+// function is passed all test cases;
 bool isLeapYear(int year) {
-    cout << "year" << endl;
+    cout << year << endl;
     if(year < 1800){
         if(year%4==0){
             return true;
@@ -15,14 +15,19 @@ bool isLeapYear(int year) {
         return true;
     else return false;
 }
-void print(int n){
+
+void printNameOfTheDay(int n){
     string arr[7] = {"sunday", " monday", "tuesday", "wedesday", "thursday", "firday", "saturday"};
     cout <<  arr[n] << endl;
 }
 
-// calculate the days in months;
+/// @brief test cases passed
+/// @param date 
+/// @param month 
+/// @param year 
+/// @return number of days
 int NumberOfDaysInMonth(int date, int month, int year){
-    cout << month << endl;
+    printf("%d %d %d", date, month, year);
     int numberOfDays =0;
     for (int i = 1; i < month; i++)
     {   
@@ -45,13 +50,13 @@ int NumberOfDaysInMonth(int date, int month, int year){
             else numberOfDays+=30;
         }
     }
-    return numberOfDays + date-1;
+    return numberOfDays + date;
 }
 
 // calculate the leap years;
 int calLeapYear(int year){
-    if(year >= 1752){
-        year = year - 1752;
+    if(year >= 1800){
+        year = year - 1800;
         return (year / 4) - (year / 100) + (year / 400) ;
     }
     else return ((year-1)/4) ; 
@@ -59,8 +64,8 @@ int calLeapYear(int year){
 
 // calculate the normal years;
 int calNormalYear(int year){
-    if(year >= 1752){
-        int normalYear = (year - 1751) - calLeapYear(year);
+    if(year >= 1800){
+        int normalYear = (year - 1800) - calLeapYear(year);
         return normalYear;
     }
     int normalYear = year - calLeapYear(year);
@@ -83,6 +88,6 @@ int main(){
     int month = 1;
     int year =1752;
     cout << year << endl;
-    print(deviatation(date, month, year));
+    printNameOfTheDay(deviatation(date, month, year));
     return 0;
 }
