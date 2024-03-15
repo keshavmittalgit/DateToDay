@@ -59,7 +59,7 @@ int calLeapYear(int year){
         year = year - 1800;
         return (year / 4) - (year / 100) + (year / 400) ;
     }
-    else return ((year-1)/4) ; 
+    else return ((year-1)/4); 
 }
 
 // calculate the normal years;
@@ -91,3 +91,4 @@ int main(){
     printNameOfTheDay(deviatation(date, month, year));
     return 0;
 }
+// this is just a test to go back in github if i commmit something bad i case, Im  this in now
