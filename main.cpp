@@ -91,4 +91,3 @@ int main(){
     printNameOfTheDay(deviatation(date, month, year));
     return 0;
 }
-// this is just a test to go back in github if i commmit something bad i case, Im  this in now
